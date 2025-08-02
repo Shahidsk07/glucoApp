@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const lifestyleController_1 = require("../controllers/lifestyleController");
+const authMiddleware_1 = require("../middleware/authMiddleware");
+const router = (0, express_1.Router)();
+router.post('/meal', authMiddleware_1.protect, lifestyleController_1.addMeal);
+router.get('/meal', authMiddleware_1.protect, lifestyleController_1.getMeals);
+router.post('/sleep', authMiddleware_1.protect, lifestyleController_1.addSleepLog);
+router.post('/activity', authMiddleware_1.protect, lifestyleController_1.addActivity);
+exports.default = router;
